@@ -1,0 +1,32 @@
+services:
+  mysql:
+    container_name: mysql
+    build:
+      dockerfile: ./mysql/Dockerfile
+    environment:
+      MYSQL_DATABASE: mysqldb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - 3306:3306
+    volumes:
+      - ../mysql/initdb:/docker-entrypoint-initdb.d
+      - mysql_db:/var/lib/mysql
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile : ./spring/Dockerfile
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    tty: true
+    volumes:
+      - ../backend:/srv:cached
+      - ../:/home/vscode/workspace:cache
+    working_dir: /srv
+volumes:
+  mysql_db:
+    driver: local

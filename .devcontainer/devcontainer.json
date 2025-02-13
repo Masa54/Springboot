@@ -1,0 +1,22 @@
+{
+    "name": "springboot",
+    "workspaceFolder": "/srv",
+    "dockerComposeFile": "../dockerfile/docker-compose.yml",
+    "service": "backend",
+    "customizations": {
+        "vscode": {
+			"settings": {
+                "java.jdt.ls.java.home":"/usr/lib/jvm/java-17-openjdk-amd64",
+				"extensions.verifySignature": false
+			},
+            "extensions": [
+                "ms-ceintl.vscode-language-pack-ja",
+                "oderwat.indent-rainbow",
+                "vmware.vscode-boot-dev-pack",
+                "vscjava.vscode-java-pack",
+                "vscjava.vscode-lombok",
+                "juhahinkula.thymeleaf"
+            ]
+        }
+    }
+}
