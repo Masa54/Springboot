@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/Sample.css}" rel="stylesheet" type="text/css">
+        <title>ユーザー情報入力</title>
+    </head>
+
+    <body>
+        <div id="container">
+            <h1>SpringBootサンプルアプリケーション</h1>
+            <!-- ${}はModel.addAttributeで設定したオブジェクトを参照する時に使用 -->
+            <!-- *{}はth:objectで指定したオブジェクトを基準に使用する。*{id}は本来${users.id}となる。form内で使用するのが一般的 -->
+            <form th:action="@{/form}" th:object="${users}" method="post">
+                <table>
+                    <tr>
+                        <th>入力項目</th>
+                        <th colspan="2">入力値</th>
+                    </tr>
+                    <tr>
+                        <td>個人番号</td>
+                        <td colspan="2"><input type="number" th:field="*{id}"></td>
+                    </tr>
+                    <tr>
+                        <td>氏名</td>
+                        <td colspan="2"><input type="text" th:field="*{name}"></td>
+                    </tr>
+                    <tr>
+                        <td>年齢</td>
+                        <td colspan="2"><input type="text" th:field="*{age}"></td>
+                    </tr>
+                    <tr>
+                        <td>誕生日</td>
+                        <td colspan="2"><input type="text" th:field="*{birthday_date}"></td>
+                    </tr>
+                    <tr>
+                        <th rowspan="5">住所</th>
+                        <td>都道府県</td>
+                        <td><input type="text" th:field="*{address.region}"></td>
+                    </tr>
+                    <tr>
+                        <td>市区町村</td>
+                        <td><input type="text" th:field="*{address.city}"></td>
+                    </tr>
+                    <tr>
+                        <td>住所1</td>
+                        <td><input type="text" th:field="*{address.addressLine}"></td>
+                    </tr>
+                    <tr>
+                        <td>住所2</td>
+                        <td><input type="text" th:field="*{address.addressLine}"></td>
+                    </tr>
+                    <tr>
+                        <td>住所3</td>
+                        <td><input type="text" th:field="*{address.addressLine[2]}"></td>
+                    </tr>
+                    <button style="float:right">送信</button>
+                </table>
+            </form>
+        </div>
+    </body>
+
+</html>

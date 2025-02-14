@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/Sample.css}" rel="stylesheet" type="text/css">
+        <title>情報引継ぎ画面</title>
+    </head>
+
+    <body>
+        <div id="container">
+            <h1 id="page-header">情報引継ぎ画面</h1>
+
+            <form action="@{/commit}" th:object="${users}" method="post">
+                <span th:inline="text">
+                    個人番号：[[${users.id}]]
+                    氏名：[[${users.name}]]
+                    年齢：[[${users.age}]]
+                    誕生日：[[${users.birthday_date}]]
+                    住所：[[${users.address.region}]][[${users.address.city}]][[${users.address.addressLine[0]}]][[${users.address.addressLine[1]}]][[${users.address.addressLine[2]}]]
+                </span>
+
+                <th:block th:each="address : ${users.address.addressLine}">
+                    <label th:text="${address}"></label>
+                </th:block>
+
+                <th:block th:each="address : ${users.address.addressLine}">
+                    [[${address}]]
+                </th:block>
+
+                <input type="hidden" th:field="*{id}" value="${users.id}">
+                <input type="hidden" th:field="*{name}" value="${users.name}">
+                <input type="hidden" th:field="*{age}" value="${users.age}">
+                <input type="hidden" th:field="*{birthday_date}" value="${users.birthday_date}">
+                <input type="hidden" th:field="*{address.region}" value="${users.address.region}">
+                <input type="hidden" th:field="*{address.id}" value="${users.address.city}">
+
+                <input type="hidden" th:field="*{address.addressLine}" value="${users.address.addressLine}">
+
+                <input type="submit" name="back" style="float:left" value="入力画面に戻る">
+                <input type="submit" name="commit" style="float:right" value="完了">
+            </form>
+        </div>
+    </body>
+
+</html>
