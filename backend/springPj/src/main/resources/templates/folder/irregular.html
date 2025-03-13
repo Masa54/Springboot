@@ -13,8 +13,8 @@
             [[${user.errMsg}]]<br>
             後付けのメッセージは「[[${message}]]」
             <form th:action="@{/form}" th:object="${user}" method="get">
-                <input type="hidden" th:value="*{uNo}" />
-                <input type="hidden" th:value="*{uName}" />
+                <input type="hidden" th:value="*{id}" />
+                <input type="hidden" th:value="*{name}" />
 
                 <button style="float:right">入力画面に戻る</button>
             </form>

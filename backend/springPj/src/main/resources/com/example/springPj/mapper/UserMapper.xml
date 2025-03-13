@@ -25,12 +25,12 @@
                 id
                 , name
                 , age
-                , birthday_DATE
+                , birthday_date
             ) SELECT 
                 COALESCE(MAX(id), 0) + 1 
                 , #{name}
                 , #{age}
-                , #{birthday_DATE} 
+                , #{birthday_date}
             FROM 
                 users
     </insert>

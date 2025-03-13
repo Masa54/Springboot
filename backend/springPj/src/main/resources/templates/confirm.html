@@ -11,7 +11,7 @@
         <div id="container">
             <h1 id="page-header">情報引継ぎ画面</h1>
 
-            <form action="@{/commit}" th:object="${user}" method="post">
+            <form th:action="@{/commit}" th:object="${user}" method="post">
                 <span th:inline="text">
                     個人番号：[[${user.id}]]
                     氏名：[[${user.name}]]
@@ -33,7 +33,7 @@
                 <input type="hidden" th:field="*{age}" value="${user.age}">
                 <input type="hidden" th:field="*{birthday_date}" value="${user.birthday_date}">
                 <input type="hidden" th:field="*{address.region}" value="${user.address.region}">
-                <input type="hidden" th:field="*{address.id}" value="${user.address.city}">
+                <input type="hidden" th:field="*{address.city}" value="${user.address.city}">
 
                 <input type="hidden" th:field="*{address.addressLine}" value="${user.address.addressLine}">
 
