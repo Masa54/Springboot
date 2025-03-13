@@ -14,5 +14,5 @@ public class Address {
     private String city;
 
     /* 市区町村以下 */
-    private List<String> adressLine = new ArrayList<>();
+    private List<String> addressLine = new ArrayList<>();
 }

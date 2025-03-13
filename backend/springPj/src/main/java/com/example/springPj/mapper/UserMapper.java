@@ -7,7 +7,7 @@ import com.example.springPj.entity.UsersTable;
 @Mapper
 public interface UserMapper {
     /* 番号で検索 */
-    public List<UsersTable> selectById(int id);
+    public List<UsersTable> selectById(long id);
 
     /* ユーザー登録 */
     public int insert(UsersTable usersTable);

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.springPj.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.example.springPj.entity.UsersTable">
+        <result column="id"            jdbcType="INTEGER" property="id"         />
+        <result column="name"          jdbcType="VARCHAR" property="name"       />
+        <result column="age"           jdbcType="INTEGER" property="age"        />
+        <result column="birthday_date" jdbcType="DATE"    property="birthday_date" />
+    </resultMap>
+
+    <select id="selectById" resultMap="userMap" parameterType="long">
+        SELECT
+            * 
+        FROM 
+            users 
+        WHERE 
+            id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.example.springPj.entity.UsersTable">
+        INSERT INTO 
+            users (
+                id
+                , name
+                , age
+                , birthday_DATE
+            ) SELECT 
+                COALESCE(MAX(id), 0) + 1 
+                , #{name}
+                , #{age}
+                , #{birthday_DATE} 
+            FROM 
+                users
+    </insert>
+</mapper>

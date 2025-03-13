@@ -9,10 +9,12 @@
 
     <body>
         <div id="container">
-            <h1>SpringBootサンプルアプリケーション</h1>
+            <h1 id="page-hedder">SpringBootサンプルアプリケーション</h1>
+            <h2>情報入力</h2>
+            下の表に、次のページに引き継ぐ情報を入力します。
             <!-- ${}はModel.addAttributeで設定したオブジェクトを参照する時に使用 -->
-            <!-- *{}はth:objectで指定したオブジェクトを基準に使用する。*{id}は本来${users.id}となる。form内で使用するのが一般的 -->
-            <form th:action="@{/form}" th:object="${users}" method="post">
+            <!-- *{}はth:objectで指定したオブジェクトを基準に使用する。*{id}は本来${user.id}となる。form内で使用するのが一般的 -->
+            <form th:action="@{/form}" th:object="${user}" method="post">
                 <table>
                     <tr>
                         <th>入力項目</th>
